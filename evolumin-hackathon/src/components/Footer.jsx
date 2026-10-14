@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import LOGO from "../assets/logo.jpg";
+import { LINKS } from "../data.jsx";
 
-export default function Footer({ go }) {
+export function Footer() {
   return (
-    <footer className="foot" id="contact"><div className="wrap">
-      <div className="fg">
-        <div><div className="logo"><img src={LOGO} className="nav-logo" alt="" />EVO<b>LUMIN</b></div><p style={{ marginTop: 12 }}>Build. Evolve. Illuminate. Ideas that burn bright.</p></div>
-        <div><h5>Explore</h5><a onClick={() => go("about")}>About</a><a onClick={() => go("problems")}>Domains</a><a onClick={() => go("dates")}>Important dates</a><a onClick={() => go("qa")}>Q&amp;A</a></div>
-        <div><h5>Contact</h5><a href="mailto:hello@evolumin.example">hello@evolumin.example</a><p>Coordinator, +91 00000 00000</p><p>Venue: to be announced</p></div>
-        <div><h5>Follow us</h5><a>Instagram</a><a>LinkedIn</a><a>Discord</a></div>
+    <footer id="contact">
+      <div className="wrap fg">
+        <div><h3>Evolumin</h3><p style={{ marginTop: 10 }}>Build. Evolve. Illuminate.</p></div>
+        <nav aria-label="Footer"><h4>Explore</h4>{LINKS.map(([id, l]) => <a key={id} href={"#" + id}>{l}</a>)}</nav>
+        <div><h4>Contact</h4><a href="mailto:hello@evolumin.example">hello@evolumin.example</a><p>Coordinator, +91 00000 00000</p><p>Venue: to be announced</p></div>
+        <div><h4>Follow</h4><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Discord</a></div>
       </div>
-      <div className="mega">EVOLUMIN</div>
-      <div className="copy">© Evolumin Hackathon. All rights reserved.</div>
-    </div></footer>
+      <div className="wrap"><p className="cp">© Evolumin Hackathon. All rights reserved.</p></div>
+    </footer>
   );
 }

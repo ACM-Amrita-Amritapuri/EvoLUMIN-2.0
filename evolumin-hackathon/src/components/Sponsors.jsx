@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { Head } from "./Head.jsx";
+import { SPONSORS } from "../data.jsx";
 
-export default function Sponsors() {
+export function Sponsors() {
   return (
-    <section id="partners"><div className="wrap" style={{ textAlign: "center" }}>
-      <h2 style={{ display: "inline-block", textAlign: "left" }}>Sponsors &amp; Partners.</h2>
-      <p className="sub">The organisations backing Evolumin.</p>
-      <div className="sp">
-        {["Title Sponsor", "Industry Partner", "Knowledge Partner"].map(n => <div key={n}><b>Your Logo</b><span>{n}</span></div>)}
-      </div>
-      <a className="btn ghost" href="mailto:hello@evolumin.example?subject=Sponsorship%20Inquiry">Interested in sponsoring?</a>
+    <section className="sec" id="sponsors"><div className="wrap">
+      <Head eb="Partners" title="Backed by people who build." lead="Our partners fund the prizes, mentor the teams and open doors for the winners." />
+      <div className="tiers">{SPONSORS.map(([tier, name, d, m], i) => (
+        <article className={"sc" + (i === 0 ? " top" : "")} key={name}>
+          <div className="lg"><svg viewBox="0 0 120 60" fill="none" stroke="#fff" strokeWidth="2" aria-hidden="true"><circle cx="40" cy="30" r="20" /><path d="M34 40L40 20L46 40M36 34H44" strokeLinecap="round" /><text x="72" y="38" fill="#fff" stroke="none" fontSize="22" fontWeight="600" fontFamily="Goldman,sans-serif">{m}</text></svg></div>
+          <div className="bd"><small>{tier}</small><h3>{name}</h3><p>{d}</p></div>
+        </article>
+      ))}</div>
     </div></section>
   );
 }

@@ -1,18 +1,12 @@
-import React, { useState } from "react";
-import { DOMAINS } from "../data";
+import { Head } from "./Head.jsx";
+import { Count } from "./Count.jsx";
 
-export default function About() {
-  const total = DOMAINS.reduce((a, d) => a + d.problems.length, 0);
+export function About() {
+  const F = [[<Count to={36} suffix=" h" />, "Build sprint"], ["2 to 4", "Team size"], [<Count to={6} />, "Domains"], ["Hybrid", "Online + onsite"]];
   return (
-    <section id="about"><div className="wrap">
-      <h2>Evolumin.</h2>
-      <p className="sub">Teams of 2 to 4 choose a domain and build a solution over the hackathon.</p>
-      <div className="tiles flat">
-        <div className="tile"><b data-count="36">36</b><span>Hours</span></div>
-        <div className="tile"><b>₹ TBA</b><span>Prize pool</span></div>
-        <div className="tile"><b>2 to 4</b><span>Team size</span></div>
-        <div className="tile"><b data-count={DOMAINS.length} data-pad="1">{String(DOMAINS.length).padStart(2, "0")}</b><span>Domains · {total} problems</span></div>
-      </div>
+    <section className="sec" id="about"><div className="wrap">
+      <Head eb="About" title="Built to turn ideas into working things." lead="Evolumin brings students together to tackle real problems across six domains. Teams plan online, then build and pitch to a panel of judges, with mentors alongside from start to finish." />
+      <div className="facts">{F.map(([b, s]) => <div className="fact" key={s}><b>{b}</b><span>{s}</span></div>)}</div>
     </div></section>
   );
 }
