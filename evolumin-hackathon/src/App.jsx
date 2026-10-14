@@ -55,7 +55,10 @@ export default function App() {
       <a className="skip" href="#main">Skip to content</a>
       <div className="prog" ref={bar} aria-hidden="true" />
       <header className="nav"><div className="wrap ni">
-        <a className="brand" href="#top">Evolumin</a>
+        <a className="brand" href="#top" aria-label="Evolumin home">
+          <img className="logo" src={import.meta.env.BASE_URL + "logo.jpeg"} alt="" width="28" height="28" />
+          <span>Evolumin</span>
+        </a>
         <nav aria-label="Primary" className={"ls" + (menu ? " o" : "")}>{LINKS.map(([id, l]) => <a key={id} href={"#" + id} className={cur === id ? "on" : ""} aria-current={cur === id ? "true" : undefined} onClick={() => setMenu(false)}>{l}</a>)}</nav>
         <a className="btn sm" href="#register">Register</a>
         <button className="bu" aria-label="Menu" aria-expanded={menu} onClick={() => setMenu(!menu)}>{menu ? "✕" : "☰"}</button>

@@ -10,7 +10,8 @@ button{font:inherit;color:inherit;cursor:pointer}a{color:inherit}
 /* nav */
 .nav{position:fixed;inset:0 0 auto;z-index:50;background:#000;border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0)}
 .ni{display:flex;align-items:center;gap:12px;height:var(--nav)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none;min-height:44px}.brand::before{content:"";width:10px;height:10px;background:var(--rd)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none;min-height:44px}
+.logo{flex:none;width:auto;height:32px;max-width:48px;object-fit:contain;display:block}
 .ls{display:flex;gap:4px;margin-left:auto;margin-right:12px}
 .ls a{display:flex;align-items:center;min-height:44px;padding:0 14px;color:var(--mut);text-decoration:none;font-size:15px;border-bottom:2px solid transparent;transition:color .2s}
 .ls a:hover{color:#fff}.ls a.on{color:#fff;border-bottom-color:#fff}
