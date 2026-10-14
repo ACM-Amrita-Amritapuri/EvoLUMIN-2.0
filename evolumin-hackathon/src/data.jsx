@@ -1,5 +1,3 @@
-export const EVENT = new Date("2026-12-15T09:00:00+05:30"); // placeholder start date
-
 export const ART = {
   ai: <g><circle cx="40" cy="30" r="7"/><circle cx="40" cy="90" r="7"/><circle cx="100" cy="20" r="7"/><circle cx="100" cy="60" r="7"/><circle cx="100" cy="100" r="7"/><circle cx="160" cy="60" r="7"/><path d="M47 30L93 20M47 30L93 60M47 90L93 60M47 90L93 100M107 20L153 60M107 60L153 60M107 100L153 60"/></g>,
   health: <g><path d="M10 70H55L70 30L95 105L115 50L130 70H190"/><circle cx="100" cy="60" r="52" opacity=".4"/></g>,
@@ -31,20 +29,13 @@ export const STAGES = [
 
 export const FAQS = [
   ["Who can participate?", "Students and early professionals. Final eligibility rules will be on the registration page."],
-  ["How big can a team be?", "Teams of 2 to 4 members. Solo entries are welcome too."],
+  ["How big can a team be?", "Teams must have 2 to 4 members. Solo entries are not accepted."],
   ["What do we need to submit?", "A short abstract for the idea round, then a working prototype, code repository and a short pitch in the final round."],
   ["Can we bring our own idea?", "Yes. Choose Open Innovation and pitch your own problem and solution."],
   ["Will there be mentors?", "Yes. Mentor sessions run at kick-off and during the build sprint."],
   ["Is it online or in person?", "Idea submission is online. The final round is held in person at the venue."],
 ];
 
-export const SPONSORS = [
-  ["Title Sponsor", "Your Company Name", "Funds the prize pool and offers winning teams interviews and mentoring.", "A"],
-  ["Industry Partner", "Partner Name", "Provides cloud credits and tools for every team to build with.", "B"],
-  ["Knowledge Partner", "Institute Name", "Supplies mentors and judges from research and academia.", "C"],
-  ["Community Partner", "Community Name", "Helps spread the word and supports the student community.", "D"],
-];
-
 export const LINKS = [["about", "About"], ["domains", "Domains"], ["timeline", "Timeline"], ["qa", "Q&A"], ["sponsors", "Sponsors"]];
 
-export const REGISTER_URL = "#register"; // paste your registration portal link here
+export const REGISTER_URL = "#register";

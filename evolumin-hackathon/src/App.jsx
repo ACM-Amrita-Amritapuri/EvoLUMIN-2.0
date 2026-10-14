@@ -32,10 +32,10 @@ export default function App() {
     setMenu(false);
     document.title = d ? d.name + " · Evolumin Hackathon" : "Evolumin Hackathon";
     const j = jump.current; jump.current = null;
-    if (track) scrollTo({ top: 0, behavior: "instant" });
+    if (track) scrollTo({ top: 0, behavior: "auto" });
     else {
       const id = j !== null ? j : location.hash.slice(1), el = id && document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "instant" }); else if (!first.current) scrollTo({ top: 0, behavior: "instant" });
+      if (el) el.scrollIntoView({ behavior: "auto" }); else if (!first.current) scrollTo({ top: 0, behavior: "auto" });
     }
     first.current = false;
   }, [track]);

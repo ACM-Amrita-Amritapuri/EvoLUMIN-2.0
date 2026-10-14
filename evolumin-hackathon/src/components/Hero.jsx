@@ -2,13 +2,17 @@ import { useState, useEffect, useRef } from "react";
 import { Clock } from "./Clock.jsx";
 
 export function Hero() {
-  const v = useRef(null), [on, setOn] = useState(true);
+  const v = useRef(null), [on, setOn] = useState(false);
   useEffect(() => {
     const el = v.current; el.muted = true; el.defaultMuted = true;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setOn(false); return; }
-    el.play().catch(() => setOn(false));
+    el.play().then(() => setOn(true)).catch(() => setOn(false));
   }, []);
-  const toggle = () => { const el = v.current; if (el.paused) { el.play(); setOn(true); } else { el.pause(); setOn(false); } };
+  const toggle = () => {
+    const el = v.current;
+    if (el.paused) el.play().then(() => setOn(true)).catch(() => setOn(false));
+    else { el.pause(); setOn(false); }
+  };
   return (
     <section className="hero" id="top">
       <video className="bgv" ref={v} src={import.meta.env.BASE_URL + "hero.mp4"} autoPlay muted loop playsInline preload="auto" aria-hidden="true" />

@@ -35,13 +35,8 @@ button{font:inherit;color:inherit;cursor:pointer}a{color:inherit}
 .vbtn{position:absolute;z-index:3;right:clamp(20px,5vw,56px);top:calc(var(--nav) + 16px);min-height:44px;padding:0 16px;background:#000;border:1px solid var(--line);border-radius:2px;font-size:14px;color:var(--mut);transition:color .2s,border-color .2s}.vbtn:hover{color:#fff;border-color:#fff}
 /* clock: black notch that joins the hero to the page */
 .clock{position:absolute;right:0;bottom:0;z-index:3;background:#000;border-top:1px solid var(--line);border-left:1px solid var(--line);padding:clamp(20px,2.4vw,32px) clamp(24px,4vw,56px) clamp(20px,2.4vw,32px) clamp(24px,3vw,44px)}
-.clock p{margin:0 0 12px;font-size:14px;color:var(--mut)}
-.cg{display:flex;gap:clamp(16px,2.6vw,36px)}
-.u{display:flex;flex-direction:column;align-items:flex-start}
-.u b{display:flex;font-size:clamp(28px,4.4vw,56px);font-weight:700;line-height:1}
-.dgt{display:inline-block;width:.68em;text-align:center;animation:tick .35s cubic-bezier(.2,.7,.2,1)}
-.u .lb{margin-top:8px;font-size:13px;color:var(--mut)}.u.hot b{color:var(--rd)}
-@keyframes tick{from{transform:translateY(-20%);opacity:0}}
+.clock p{margin:0 0 8px;font-size:14px;color:var(--mut)}
+.clock .date{margin:0;font-size:clamp(18px,2vw,24px);font-weight:700;color:#fff}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* sections */
@@ -163,4 +158,3 @@ footer{border-top:1px solid var(--line);padding:72px 0 calc(28px + env(safe-area
 @media(max-width:640px){.dg,.dnav{grid-template-columns:1fr}.dn.nx{text-align:left;align-items:flex-start}}
 @media(max-width:520px){.fg{grid-template-columns:1fr}.fact{padding:20px 16px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.sh h2,.qa-side h2,.facts>*,.dg>*,.tiers>*,.qa>*{clip-path:none!important}}
-
