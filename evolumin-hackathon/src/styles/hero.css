@@ -1,0 +1,40 @@
+.hr{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow-x:clip;padding-top:calc(var(--nav) + 40px)}
+/* flame is the hero's right side: ~62svh of logo inside a 92svh square, bleeding a little past the right edge */
+.hr-art{position:absolute;right:-5vw;top:calc(50% - 46svh + var(--nav) / 2);width:min(90svh,74vw);aspect-ratio:1;will-change:transform;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 12%,#000 36%);mask-image:linear-gradient(90deg,transparent 12%,#000 36%)}
+.hr-art img,.hr-gl{position:absolute;inset:0;width:100%;height:100%}
+.hr-art img{object-fit:contain;transition:opacity 1.1s ease .15s}
+.hr-art.is-ready img{opacity:0}
+.hr-gl{opacity:0;transition:opacity 1.1s ease}
+.hr-art.is-ready .hr-gl{opacity:1}
+.hr-body{position:relative;padding-block:0 36px}
+.hr-kicker{color:var(--dim);font-size:16px;margin-bottom:22px}
+.hr-title{text-shadow:0 2px 40px rgba(7,7,11,.7);font-size:var(--fs-h1);font-weight:300;line-height:.94}
+.hr-ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.hr-ln>span{display:block}
+.hr .hr-sub{margin-top:24px;max-width:36ch;text-shadow:0 1px 24px rgba(7,7,11,.8)}
+.hr-facts{margin-top:14px;max-width:52ch;color:var(--dim);font-size:16px}
+.hr-cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:28px}
+.hr-link{color:var(--cream);text-decoration:none;padding:12px 0;background:linear-gradient(var(--faint),var(--faint)) 0 100%/100% 1px no-repeat;transition:background-size .3s var(--ease)}
+.hr-link:hover{background-image:var(--light)}
+.hr-foot{position:relative;padding-bottom:28px}
+.hr-orn{margin:0 0 4px;max-width:min(520px,100%)}
+.hr-orn::before{display:none}
+.hr-footrow{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.hr-clock{padding-top:18px}
+.hr-clock ol{display:flex}
+.hr-clock li{display:flex;flex-direction:column;padding-right:clamp(16px,3.4vw,44px);margin-right:clamp(16px,3.4vw,44px)}
+.hr-clock li:last-child{margin-right:0;padding-right:0}
+.hr-dg{display:block;overflow:hidden;text-shadow:0 2px 30px rgba(7,7,11,.8);font:300 clamp(52px,7.6vw,140px)/1.08 var(--serif);font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.02em;color:var(--cream)}
+.hr-dg>span{display:block}
+.hr-clock li>span{font-size:14px;letter-spacing:.01em;color:var(--dim);margin-top:4px}
+.hr-clock li+li{border-left:1px solid var(--faint);padding-left:clamp(16px,3.4vw,44px)}
+.hr-clock-label{margin-top:14px;color:var(--dim);font-size:16px}
+.hr-clock-label a{color:var(--cream)}
+.hr-vbtn{flex:none;min-height:44px;padding:0 4px;background:none;border:0;color:var(--dim);font-size:14px;text-decoration:underline;text-decoration-color:var(--faint);text-underline-offset:4px}
+.hr-vbtn:hover{color:var(--cream)}
+@media(max-width:700px){
+  .hr-art{width:124vw;right:-34vw;top:calc(var(--nav) - 2svh);-webkit-mask-image:linear-gradient(#000 55%,transparent 88%);mask-image:linear-gradient(#000 55%,transparent 88%)}
+  .hr-art .hr-gl{filter:brightness(.62)}
+  .hr-art img{filter:brightness(.62)}
+  .hr-footrow{flex-direction:column;align-items:flex-start;gap:0}
+}

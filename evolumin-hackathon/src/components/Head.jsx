@@ -1,4 +1,6 @@
+import "../styles/about.css";
 
-export const Head = ({ eb, title, lead }) => (
-  <div className="sh"><div><div className="eb">{eb}</div><h2>{title}</h2></div>{lead && <p className="lead">{lead}</p>}</div>
+// `eb` is accepted for compatibility but intentionally not rendered as a label.
+export const Head = ({ title, lead }) => (
+  <div className="ab-head"><h2 className="disp">{title}</h2>{lead && <p className="lead">{lead}</p>}</div>
 );

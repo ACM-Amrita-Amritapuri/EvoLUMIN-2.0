@@ -1,0 +1,58 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<style>
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+:root{--void:#07070b;--red:#ff4d5e;--cy:#45d0f5;--cream:#f3ece0;--dim:#a7a3ad;--g:linear-gradient(100deg,var(--red),#b06cff 50%,var(--cy));--gut:clamp(24px,5vw,120px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--void);color:var(--cream);font:400 clamp(17px,1.15vw,21px)/1.6 "Instrument Sans",system-ui,sans-serif}
+.wrap{max-width:1680px;margin:auto;padding-inline:var(--gut)}
+.sec{position:relative;min-height:100svh;padding-block:clamp(96px,14svh,200px);overflow:clip;isolation:isolate;display:flex;align-items:center}
+/* light leaks: static blurred radial layers, no filter:blur needed */
+.sec::before,.sec::after{content:"";position:absolute;z-index:-1;width:70vw;aspect-ratio:1;border-radius:50%;pointer-events:none;mix-blend-mode:screen}
+.sec::before{left:-25vw;top:-10%;background:radial-gradient(closest-side,rgba(255,77,94,.34),rgba(255,77,94,.10) 55%,transparent)}
+.sec::after{right:-25vw;bottom:-20%;background:radial-gradient(closest-side,rgba(69,208,245,.30),rgba(69,208,245,.09) 55%,transparent)}
+.sec.flip::before{left:auto;right:-25vw;background:radial-gradient(closest-side,rgba(69,208,245,.30),rgba(69,208,245,.09) 55%,transparent)}
+.sec.flip::after{right:auto;left:-25vw;background:radial-gradient(closest-side,rgba(255,77,94,.34),rgba(255,77,94,.10) 55%,transparent)}
+.grain{position:absolute;inset:0;z-index:-1;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+h2{font:300 clamp(56px,8.4vw,168px)/.92 "Cormorant Garamond",Georgia,serif;letter-spacing:-.025em}
+h2 em{font-style:italic;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.eyebrow{font:600 13px/1 sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);display:flex;gap:14px;align-items:center;margin-bottom:28px}
+.eyebrow::before{content:"";width:56px;height:1px;background:var(--g);box-shadow:0 0 12px var(--red)}
+/* 1 stats w/ glowing numerals + gradient hairline */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(56px,9svh,120px);position:relative}
+.stats::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--red) 20%,var(--cy) 80%,transparent);box-shadow:0 0 18px rgba(255,77,94,.5),0 0 18px rgba(69,208,245,.4)}
+.stats div{padding:48px 0 0}
+.stats b{display:block;font:300 clamp(90px,11vw,200px)/.9 "Cormorant Garamond",serif;background:linear-gradient(180deg,#fff,var(--c) 130%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--c) 55%,transparent))}
+.stats div:nth-child(1){--c:var(--red)}.stats div:nth-child(2){--c:#c58bff}.stats div:nth-child(3){--c:var(--cy)}
+.stats span{color:var(--dim);letter-spacing:.04em}
+/* 2 gradient border cards: static conic + animated rim on hover */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.6vw,32px);margin-top:72px}
+.card{position:relative;padding:clamp(28px,2.6vw,48px);min-height:340px;border-radius:28px;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.01));display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;background:conic-gradient(from var(--a),var(--red),transparent 30%,transparent 55%,var(--cy) 80%,var(--red));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;transition:opacity .4s;animation:spin 8s linear infinite paused}
+.card:hover::before{opacity:1;animation-play-state:running}
+.card::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:80%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 40%,transparent),transparent);opacity:.35;transition:opacity .4s,transform .6s}
+.card:hover::after{opacity:.8;transform:translateY(-12%)}
+.card:nth-child(odd){--c:var(--red)}.card:nth-child(even){--c:var(--cy)}
+@keyframes spin{to{--a:360deg}}
+.card i{font:italic 300 72px/1 "Cormorant Garamond",serif;color:var(--c);text-shadow:0 0 30px var(--c)}
+.card h3{font:400 clamp(28px,2.2vw,40px)/1.1 "Cormorant Garamond",serif;position:relative;z-index:1}
+.card p{color:var(--dim);font-size:.95em;position:relative;z-index:1;margin-top:10px}
+/* 3 timeline rail */
+.tl{position:relative;margin-top:72px;padding-left:72px;display:grid;gap:56px}
+.tl::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--red),#b06cff 50%,var(--cy));box-shadow:0 0 16px rgba(255,77,94,.6),0 0 24px rgba(69,208,245,.4);border-radius:2px}
+.tl div{position:relative}
+.tl div::before{content:"";position:absolute;left:-72px;top:.5em;width:24px;height:24px;border-radius:50%;background:var(--void);border:2px solid var(--c);box-shadow:0 0 0 6px var(--void),0 0 22px var(--c)}
+.tl div:nth-child(1){--c:var(--red)}.tl div:nth-child(2){--c:#c58bff}.tl div:nth-child(3){--c:var(--cy)}
+.tl h4{font:400 clamp(32px,3vw,52px)/1 "Cormorant Garamond",serif}.tl p{color:var(--dim)}
+.btn{display:inline-block;margin-top:56px;padding:20px 44px;border-radius:999px;color:var(--void);font-weight:600;background:var(--g);box-shadow:-14px 10px 50px -10px rgba(255,77,94,.7),14px 10px 50px -10px rgba(69,208,245,.6)}
+::selection{background:#ff4d5e55}
+:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 2px var(--void),0 0 0 4px var(--cy),0 0 24px var(--red)}
+</style>
+<section class="sec"><div class=grain></div><div class=wrap style="width:100%"><div class=eyebrow>About / 01</div>
+<h2>Technology becomes<br><em>meaningful</em> when it<br>solves problems.</h2>
+<div class=stats><div><b>36</b><span>hours to build</span></div><div><b>2–4</b><span>students per team</span></div><div><b>6</b><span>tracks to choose from</span></div></div></div></section>
+<section class="sec flip"><div class=grain></div><div class=wrap style="width:100%"><div class=eyebrow>Tracks / 02</div>
+<h2>Six ways to <em>build</em></h2>
+<div class=cards><div class=card><i>01</i><div><h3>AI &amp; Machine Learning</h3><p>Models that help people.</p></div></div><div class=card><i>02</i><div><h3>Sustainability</h3><p>Climate and campus.</p></div></div><div class=card><i>03</i><div><h3>Open Innovation</h3><p>Anything that matters.</p></div></div></div></div></section>
+<section class="sec"><div class=grain></div><div class=wrap style="width:100%"><div class=eyebrow>Timeline / 03</div>
+<h2>From idea to <em>stage</em></h2>
+<div class=tl><div><h4>Registration</h4><p>Open now.</p></div><div><h4>Online round</h4><p>Ideate from home.</p></div><div><h4>Grand finale</h4><p>36 hours on campus.</p></div></div><a class=btn href="#">Register your team</a></div></section>
