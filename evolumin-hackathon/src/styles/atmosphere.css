@@ -1,0 +1,4 @@
+.atmo{position:fixed;inset:0;width:100%;height:100%;z-index:-1;display:block;pointer-events:none;background:#07060b}
+.atmo.fb{background:
+  radial-gradient(60vmax 50vmax at 12% 18%,rgba(255,77,94,.22),transparent 70%),
+  radial-gradient(60vmax 50vmax at 88% 82%,rgba(69,208,245,.20),transparent 70%),#07060b}

@@ -1,0 +1,44 @@
+section.tl.sec:not(#top):not(#register){content-visibility:visible;padding-bottom:0;isolation:isolate}
+.tl-intro{padding-bottom:clamp(40px,8svh,100px)}
+.tl-intro .lead{margin-top:24px}
+.tl-run{position:relative;--rail:clamp(260px,24vw,420px)}
+.tl-run.pin{height:600svh}
+.tl-stage{position:relative;padding-block:24px}
+.tl-run.pin .tl-stage{position:sticky;top:0;height:100svh;overflow:clip;display:grid;align-items:center;padding-block:var(--nav) 0;-webkit-mask-image:linear-gradient(transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(transparent,#000 9%,#000 91%,transparent)}
+.tl-rail{position:relative;width:min(1680px,100% - 2*clamp(24px,5vw,120px));margin-inline:auto}
+.tl-run.pin .tl-rail{height:min(66svh,700px)}
+.tl-rail ol{list-style:none;margin:0;padding:0;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.tl-line{position:absolute;left:21px;top:28px;bottom:28px;width:2px;background:var(--faint)}
+.tl-line i{position:absolute;inset:0;background:linear-gradient(#ff4d5e,#b06cff 50%,#45d0f5);filter:drop-shadow(0 0 6px rgba(176,108,255,.8)) drop-shadow(0 0 14px rgba(69,208,245,.4))}
+.fin .tl-line i{animation:tl-ign 2.4s ease-in-out infinite}
+@keyframes tl-ign{50%{filter:drop-shadow(0 0 10px #ff4d5e) drop-shadow(0 0 26px #45d0f5) brightness(1.4)}}
+.tl-step{display:flex;align-items:center;gap:18px;width:var(--rail);height:56px;padding:0;border:0;background:none;text-align:left;color:var(--dim);font:500 16px/1.25 var(--sans);cursor:pointer;opacity:.5;transition:opacity .4s,color .4s}
+.tl-step small{display:block;font-size:13px;color:inherit;opacity:.75}
+.tl-node{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--void);font:500 20px/1 var(--serif);color:var(--dim);box-shadow:inset 0 0 0 1px var(--faint);transition:box-shadow .4s,color .4s,transform .5s var(--ease)}
+li.done .tl-node{color:#fff;box-shadow:inset 0 0 0 2px #b06cff,0 0 16px rgba(176,108,255,.55)}
+li.done .tl-step{opacity:.8}
+li.cur .tl-step{opacity:1;color:var(--cream)}
+li.cur .tl-node{transform:scale(1.18);background:linear-gradient(135deg,#ff4d5e,#b06cff 50%,#45d0f5);box-shadow:0 0 28px rgba(255,77,94,.6),0 0 40px rgba(69,208,245,.5)}
+.tl-step:hover{opacity:1}
+.tl-view{position:static;padding:24px 0 24px 48px}
+.tl-run.pin .tl-view{position:absolute;left:calc(var(--rail) + clamp(24px,5vw,100px));right:0;top:0;bottom:0;padding:0;display:flex;flex-direction:column;justify-content:center;pointer-events:none}
+.tl-phase{font:500 15px/1 var(--sans);letter-spacing:.01em;color:var(--dim)}
+.tl-date{margin-top:.5em;font-size:clamp(44px,8.6vw,168px);padding-bottom:.08em;}
+.tl-view h3{margin-top:.4em;font:400 clamp(28px,3vw,56px)/1.1 var(--serif);color:var(--cream)}
+.tl-desc{margin-top:.6em;max-width:48ch;font-size:clamp(17px,1.3vw,23px);color:var(--dim)}
+.tl-hl{margin-top:clamp(16px,3svh,36px);display:grid;gap:4px 40px;max-width:60ch;list-style:none;padding:0}
+.tl-hl li{position:relative;padding-left:24px;color:var(--cream);font-size:clamp(15px,1.1vw,19px)}
+.tl-hl li::before{content:"";position:absolute;left:2px;top:.6em;width:8px;height:8px;background:linear-gradient(135deg,#ff4d5e,#45d0f5);transform:rotate(45deg);box-shadow:0 0 10px rgba(176,108,255,.8)}
+.tl-leak{position:absolute;width:80vw;aspect-ratio:1;pointer-events:none;border-radius:50%}
+.tl-leak.r{left:-30vw;top:-35svh;background:radial-gradient(closest-side,rgba(255,77,94,.42),transparent)}
+.tl-leak.c{right:-30vw;bottom:-40svh;background:radial-gradient(closest-side,rgba(69,208,245,.4),transparent)}
+@media(max-width:700px),(hover:none),(prefers-reduced-motion:reduce){
+  .tl-rail ol{height:auto;gap:8px}
+  .tl-step{display:none}
+  .tl-line{left:11px;top:12px;bottom:12px}
+  .tl-view{position:relative}
+  .tl-view::before{content:"";position:absolute;left:4px;top:34px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#ff4d5e,#45d0f5);box-shadow:0 0 18px rgba(255,77,94,.6),0 0 18px rgba(69,208,245,.5)}
+  .tl-date{font-size:clamp(40px,12vw,64px)}
+  .tl-leak{display:none}
+}
+@media(min-width:1100px){.tl-hl{grid-template-columns:1fr 1fr}}

@@ -1,0 +1,84 @@
+/* Evolumin 2.0 foundation: tokens, reset, shared primitives. Section styles live beside each component. */
+:root{
+  --void:#07070b;      /* page */
+  --deep:#0d0d14;      /* rare raised surface */
+  --cream:#f3f6ff;     /* headlines, primary text: cool white, matches the neon red/cyan */
+  --dim:rgba(220,228,248,.68);  /* body text */
+  --faint:rgba(220,228,248,.14); /* hairlines */
+  --ember:#ff4d5e;     /* logo red, used as light */
+  --ion:#45d0f5;       /* logo cyan, used as light */
+  --violet:#b06cff;    /* mid stop: red->cyan direct goes muddy grey */
+  --light:linear-gradient(100deg,#ff4d5e,#b06cff 50%,#45d0f5);
+  --gut:clamp(24px,5vw,120px);
+  --fs-body:clamp(17px,1.15vw,21px);--fs-lead:clamp(20px,1.8vw,30px);
+  --fs-h1:clamp(64px,9vw,180px);--fs-h2:clamp(56px,8.4vw,168px);--fs-h3:clamp(28px,2.6vw,48px);--fs-num:clamp(90px,11vw,200px);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Instrument Sans",system-ui,sans-serif;
+  --nav:68px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 8px);overflow-x:clip;-webkit-text-size-adjust:100%}
+body{font-variant-numeric:lining-nums;margin:0;background:var(--void);color:var(--cream);font:400 var(--fs-body)/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4,p,ul,ol,dl,figure{margin:0;padding:0;font-weight:inherit}ul,ol{list-style:none}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ion);outline-offset:3px;border-radius:2px;box-shadow:0 0 0 6px rgba(255,77,94,.28),0 0 28px rgba(176,108,255,.4)}
+::selection{background:rgba(176,108,255,.55);color:#fff}
+
+.wrap{width:100%;max-width:min(1680px,100% - 2*var(--gut));margin-inline:auto}
+/* display type: big, light, tight. Use on h1/h2/h3. */
+.disp{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:400;line-height:.96;letter-spacing:-.02em;color:var(--cream)}
+h1.disp{font-size:var(--fs-h1)}h2.disp{font-size:var(--fs-h2);line-height:.92}h3.disp{font-size:var(--fs-h3);line-height:1.1}
+.num{font-family:var(--serif);font-weight:300;font-size:var(--fs-num);line-height:.9;font-variant-numeric:lining-nums}
+.lead{max-width:56ch;color:var(--dim);font-size:var(--fs-lead);line-height:1.55}
+/* gradient used as text colour: for at most one phrase per page-level headline */
+.lit{color:#fff;text-shadow:-.05em 0 .45em rgba(255,77,94,.65),.05em 0 .45em rgba(69,208,245,.6),0 0 .1em rgba(255,255,255,.4);padding-right:.06em}
+
+/* buttons: cream pill glowing red/cyan; .grad is the full-gradient variant */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 30px;border:0;border-radius:999px;background:var(--cream);color:var(--void);font:600 16px/1 var(--sans);text-decoration:none;box-shadow:0 0 0 1px rgba(255,255,255,.14),-10px 8px 34px -8px rgba(255,77,94,.55),10px 8px 34px -8px rgba(69,208,245,.5);transition:box-shadow .35s var(--ease),transform .35s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.3),-14px 10px 56px -4px rgba(255,77,94,.8),14px 10px 56px -4px rgba(69,208,245,.75)}
+.btn.grad{background:var(--light)}
+.btn.line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px rgba(220,228,248,.32)}
+.btn.line:hover{box-shadow:inset 0 0 0 1px var(--cream),0 0 36px rgba(176,108,255,.3)}
+.btn.sm{min-height:42px;padding:0 20px;font-size:15px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* a section hairline that fades at both ends */
+.rule{height:1px;border:0;background:linear-gradient(90deg,transparent,var(--faint) 20%,var(--faint) 80%,transparent)}
+/* primary sections: full viewport, content centred. .pin = tall pinned wrapper (own height, never contained). */
+.sec{position:relative;min-height:100svh;padding-block:clamp(96px,14svh,200px);display:flex;flex-direction:column;justify-content:center}
+.pin{min-height:0;content-visibility:visible}
+/* no content-visibility on sections: its paint containment would clip the light leaks that bleed across section edges */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* THEME: the red-to-cyan flame is the identity. It appears as gradient hairlines, borders, glows and light, never flat fills. */
+.orn{display:flex;align-items:center;gap:16px;max-width:520px;margin-inline:auto}
+.orn::before,.orn::after{content:"";flex:1;height:1px}
+.orn::before{background:linear-gradient(90deg,transparent,var(--ember))}
+.orn::after{background:linear-gradient(90deg,var(--ion),transparent)}
+.orn i{flex:none;width:9px;height:9px;transform:rotate(45deg);background:var(--light);box-shadow:-6px 0 18px rgba(255,77,94,.7),6px 0 18px rgba(69,208,245,.7)}
+/* glowing hairline: <hr class="gline"> */
+.gline{height:1px;border:0;background:linear-gradient(90deg,transparent,var(--ember) 25%,var(--violet) 50%,var(--ion) 75%,transparent);box-shadow:0 0 24px rgba(255,77,94,.35),0 0 24px rgba(69,208,245,.3);opacity:.85}
+/* gradient 1px ring + soft two-colour glow */
+.frame{position:relative;border-radius:2px;box-shadow:-30px 20px 90px -40px rgba(255,77,94,.35),30px 20px 90px -40px rgba(69,208,245,.3)}
+.frame::before{content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;background:var(--light);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.glow{text-shadow:-8px 0 40px rgba(255,77,94,.4),8px 0 40px rgba(69,208,245,.35)}
+.eyebrow{display:flex;align-items:center;gap:14px;font:600 13px/1 var(--sans);letter-spacing:.01em;color:var(--dim)}
+.eyebrow::before{content:"";width:56px;height:1px;background:var(--light);box-shadow:0 0 12px var(--ember)}
+
+/* LIGHT LEAKS: two huge static radial layers per section (no blur filter, no animation); edges overlap neighbours by 20svh.
+   Per section: --c1/--c2 colours, --s1/--s2 = "left" or "right" side. Defaults red top-left, cyan bottom-right. */
+#top,#about,#domains,#timeline,#qa,#register{position:relative;isolation:isolate}
+#top::before,#top::after,#about::before,#about::after,#domains::before,#domains::after,#timeline::before,#timeline::after,#qa::before,#qa::after,#register::before,#register::after{content:"";position:absolute;z-index:-1;width:70vw;aspect-ratio:1;border-radius:50%;pointer-events:none;mix-blend-mode:screen}
+#top::before,#about::before,#domains::before,#timeline::before,#qa::before,#register::before{top:-20svh;left:-25vw;background:radial-gradient(closest-side,var(--c1,rgba(255,77,94,.34)),color-mix(in srgb,var(--c1,rgba(255,77,94,.34)) 30%,transparent) 55%,transparent)}
+#top::after,#about::after,#domains::after,#timeline::after,#qa::after,#register::after{bottom:-20svh;right:-25vw;background:radial-gradient(closest-side,var(--c2,rgba(69,208,245,.30)),color-mix(in srgb,var(--c2,rgba(69,208,245,.30)) 30%,transparent) 55%,transparent)}
+#top{--c1:rgba(255,77,94,.4);--c2:rgba(69,208,245,.36)}
+#about{--c1:rgba(255,77,94,.34);--c2:rgba(69,208,245,.30)}
+#domains{--c1:rgba(69,208,245,.34);--c2:rgba(255,77,94,.30)}
+#domains::before{left:auto;right:-25vw}#domains::after{right:auto;left:-25vw}
+#timeline{--c1:rgba(255,77,94,.36);--c2:rgba(69,208,245,.36)}
+#qa{--c1:rgba(69,208,245,.14);--c2:rgba(255,77,94,.14)}
+#qa::before{left:-25vw}#qa::after{right:-25vw}
+#register{--c1:rgba(255,77,94,.42);--c2:rgba(69,208,245,.42)}
+#register::before{left:-10vw;top:-10svh}#register::after{right:-10vw;bottom:-10svh}
